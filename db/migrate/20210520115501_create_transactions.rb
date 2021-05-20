@@ -4,8 +4,8 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.integer :amount
       t.string :purpose
       t.string :type
-      t.references :sender_wallet_id, null: false
-      t.references :receiver_wallet_id, null: false
+      t.references :sender_wallet, null: false
+      t.references :receiver_wallet, null: false
 
       t.timestamps
     end
