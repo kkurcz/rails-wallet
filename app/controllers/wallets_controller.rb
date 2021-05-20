@@ -7,6 +7,7 @@ class WalletsController < ApplicationController
   end
 
   def show
+    @transactions = policy_scope(Transaction).where(sender_wallet: @wallet.id).order(created_at: :desc)
   end
 
   def new

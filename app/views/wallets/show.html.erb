@@ -5,7 +5,12 @@
 <h6>Current Balance: <%= @wallet.balance %></h6>
 
 <h6 class="mt-5">Transaction History</h6>
-
+<% @transactions.each do |transaction| %>
+  <h6><%= transaction.amount %></h6>
+  <h6><%= transaction.activity %></h6>
+  <h6><%= transaction.purpose %></h6>
+  <h6><%= transaction.receiver_wallet.name %></h6>
+<% end %>
 
 <p class="mt-5">New transaction</p>
 <%= link_to 'withdraw/deposit/transfer', new_wallet_transaction_path(@wallet) %>

@@ -2,8 +2,10 @@ class TransactionPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       # use for testing
-      # scope.all
-      scope.where(user: user)
+        scope.all
+        # raise
+      # scope.where(sender_wallet: @wallet.id)
+      # scope.where(user: user)
     end
   end
 
