@@ -2,15 +2,16 @@ class TransactionsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
   def index
-    # @transactions = transaction.all
-    @transactions = policy_scope(transaction).order(created_at: :desc)
+    @transactions = Transaction.all
+     # @transactions = policy_scope(transaction).order(created_at: :desc)
   end
 
   def show
   end
 
   def new
-    @transaction = transaction.new
+    @wallet = Wallet.find(params[:wallet_id])
+    @transaction = Transaction.new
     authorize @transaction
   end
 
@@ -20,12 +21,14 @@ class TransactionsController < ApplicationController
 
   # POST /transactions
   def create
-    @transaction = transaction.new(transaction_params)
-    @transaction.user = current_user
+    # raise
+    @transaction = Transaction.new(transaction_params)
+    @wallet = Wallet.find(params[:wallet_id])
+    @transaction.sender_wallet = @wallet
     authorize @transaction
 
     if @transaction.save
-      redirect_to @transaction, notice: 'transaction was created.'
+      redirect_to root_path, notice: 'transaction was created.'
     else
       render :new
     end
@@ -52,6 +55,6 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:name)
+    params.require(:transaction).permit(:type, :amount, :purpose, :receiver_wallet_id)
   end
 end
