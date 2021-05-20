@@ -1,3 +1,7 @@
 <%= @wallet.name %>
 
 <p>This is where transactions will be listed with wallet.transactions</p>
+
+<%= link_to 'edit', edit_wallet_path(@wallet) %>
+<%= link_to 'delete', wallet_path(@wallet), method: :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to 'back', root_path %>

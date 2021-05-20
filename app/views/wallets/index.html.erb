@@ -3,11 +3,10 @@
 
 <h1>Your Wallets</h1>
 
-<ul>
-  <% @wallets.each do |wallet| %>
-    <li><%= link_to wallet.name, wallet_path(wallet) %></li>
-  <% end %>
-</ul>
+<% @wallets.each do |wallet| %>
+  <h5><%= link_to wallet.name, wallet_path(wallet) %></h5>
+  <h6>Wallet balance: <%= wallet.balance %></h6>
+<% end %>
 
 <%= link_to 'Create a new wallet', new_wallet_path %>
 

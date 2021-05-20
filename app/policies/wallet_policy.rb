@@ -1,11 +1,26 @@
 class WalletPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      # use for testing
+      # scope.all
+      scope.where(user: user)
     end
   end
 
   def create?
-    return true
+    true
   end
+
+  def show?
+    true
+  end
+
+  def update?
+    user == record.user
+  end
+
+  def destroy?
+    user == record.user
+  end
+
 end
