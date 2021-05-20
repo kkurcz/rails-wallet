@@ -13,10 +13,12 @@
 <% end %>
 
 <p class="mt-5">New transaction</p>
-<%= link_to 'withdraw/deposit/transfer', new_wallet_transaction_path(@wallet) %>
+<%= link_to 'withdraw', new_wallet_transaction_path(@wallet) %> /
+<%= link_to 'deposit', new_wallet_transaction_path(@wallet) %> /
+<%= link_to 'transfer', new_wallet_transaction_path(@wallet) %>
 
 <p class="mt-5">Manage this wallet</p>
 
-<%= link_to 'edit', edit_wallet_path(@wallet) %>
-<%= link_to 'delete', wallet_path(@wallet), method: :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to 'edit', edit_wallet_path(@wallet) %> /
+<%= link_to 'delete', wallet_path(@wallet), method: :delete, data: {confirm: "Are you sure?"} %> /
 <%= link_to 'back', root_path %>

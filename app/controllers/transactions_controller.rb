@@ -3,16 +3,18 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
   def index
     @transactions = Transaction.all
-     # @transactions = policy_scope(transaction).order(created_at: :desc)
   end
 
   def show
+  # maybe use for later
   end
 
   def new
     @wallet = Wallet.find(params[:wallet_id])
     @transaction = Transaction.new
     authorize @transaction
+    # this is only needed for frontend simple form for transfers
+    @wallets = Wallet.all
   end
 
   # GET /transaction/1/edit
@@ -33,20 +35,6 @@ class TransactionsController < ApplicationController
     else
       render :new
     end
-  end
-
-  # PATCH/PUT /wallets/1
-  def update
-    if @transaction.update(transaction_params)
-      redirect_to @transaction, notic: 'transaction was updated.'
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @transaction.destroy
-    redirect_to transactions_url, notice: 'transaction was deleted.'
   end
 
   private

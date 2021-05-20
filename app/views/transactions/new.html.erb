@@ -1,15 +1,18 @@
+
+<h2>Please select the type of transaction</h2>
+
 <%= simple_form_for [ @wallet, @transaction ] do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.error[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :activity, placeholder: "Type", collection: ["Withdrawal", "Deposit", "Transfer"] %>
+    <%= f.input :activity, placeholder: "Type", label: "Type", collection: ["Withdrawal", "Deposit", "Transfer"] %>
     <%= f.input :amount, placeholder: "Amount" %>
-    <%= f.input :receiver_wallet_id, placeholder: "john@gmail.com"%>
+    <%= f.input :receiver_wallet_id, collection: @wallets %>
     <%= f.input :purpose, placeholder: "Purpose"%>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit%>
   </div>
 <% end  %>
