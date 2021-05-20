@@ -4,5 +4,5 @@ class Transaction < ApplicationRecord
 
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :purpose, presence: true, length: { minimum: 1 }
-  validates :type, inclusion: { in: ["Withdrawal", "Deposit", "Transfer"] }
+  validates :activity, inclusion: { in: ["Withdrawal", "Deposit", "Transfer"] }
 end

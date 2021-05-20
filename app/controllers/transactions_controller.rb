@@ -55,6 +55,6 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:type, :amount, :purpose, :receiver_wallet_id)
+    params.require(:transaction).permit(:activity, :amount, :purpose, :receiver_wallet_id)
   end
 end
