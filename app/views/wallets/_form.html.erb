@@ -1,4 +1,4 @@
-<%= simple_form_for (@wallets) do |f| %>
+<%= simple_form_for (@wallet) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.error[:base].to_sentence if f.object.errors[:base].present? %>
 
