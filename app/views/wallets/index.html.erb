@@ -4,7 +4,7 @@
 <h1>Your Wallets</h1>
 
 <% @wallets.each do |wallet| %>
-  <h5><%= link_to wallet.name, wallet_path(wallet) %></h5>
+  <h5 class="wallet-title"><%= link_to wallet.name, wallet_path(wallet) %></h5>
   <h6>Wallet balance: <%= wallet.balance %></h6>
 <% end %>
 

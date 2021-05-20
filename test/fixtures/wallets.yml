@@ -1,0 +1,8 @@
+ethereum_wallet:
+  name: "ethereum wallet"
+  balance: 100
+  user_id: 1
+bitcoin_wallet:
+  name: "bitcoin wallet"
+  balance: 300
+  user_id: 2
