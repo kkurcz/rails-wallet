@@ -5,4 +5,20 @@ class Transaction < ApplicationRecord
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :purpose, presence: true, length: { minimum: 1 }
   validates :activity, inclusion: { in: ["Withdrawal", "Deposit", "Transfer"] }
+
+  def update_balance
+    # raise
+    if self.activity == 'Withdrawal'
+      self.sender_wallet.balance -= self.amount
+      self.sender_wallet.save
+    elsif self.activity == 'Deposit'
+      self.sender_wallet.balance += self.amount
+      self.sender_wallet.save
+    else
+      self.sender_wallet.balance -= self.amount
+      self.receiver_wallet.balance += self.amount
+      self.sender_wallet.save
+      self.receiver_wallet.save
+    end
+  end
 end

@@ -28,13 +28,14 @@ class TransactionsController < ApplicationController
     authorize @transaction
 
     if @transaction.save
+      @transaction.update_balance
       redirect_to root_path, notice: 'transaction was created.'
     else
       render :new
     end
   end
 
-  # PATCH/PUT /walles/1
+  # PATCH/PUT /wallets/1
   def update
     if @transaction.update(transaction_params)
       redirect_to @transaction, notic: 'transaction was updated.'

@@ -2,13 +2,15 @@
   <%= @wallet.name %>
 </h5>
 
-<h6>Transactions</h6>
+<h6>Current Balance: <%= @wallet.balance %></h6>
+
+<h6 class="mt-5">Transaction History</h6>
 
 
-<p class="mt-5">Create a transaction</p>
+<p class="mt-5">New transaction</p>
 <%= link_to 'withdraw/deposit/transfer', new_wallet_transaction_path(@wallet) %>
 
-<p class="mt-5">Manage your wallet</p>
+<p class="mt-5">Manage this wallet</p>
 
 <%= link_to 'edit', edit_wallet_path(@wallet) %>
 <%= link_to 'delete', wallet_path(@wallet), method: :delete, data: {confirm: "Are you sure?"} %>
