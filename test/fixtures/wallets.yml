@@ -6,3 +6,8 @@ bitcoin_wallet:
   name: "bitcoin wallet"
   balance: 300
   user_id: 2
+household_wallet:
+  name: "household"
+  balance: 900
+  user_id: 2
+
