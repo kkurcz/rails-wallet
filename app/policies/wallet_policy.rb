@@ -8,11 +8,11 @@ class WalletPolicy < ApplicationPolicy
   end
 
   def create?
-    user == record.user
+    true
   end
 
   def show?
-    user == record.user
+    true
   end
 
   def update?

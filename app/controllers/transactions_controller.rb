@@ -29,7 +29,7 @@ class TransactionsController < ApplicationController
     @transaction.sender_wallet = @wallet
     authorize @transaction
 
-    if @transaction.save
+    if @transaction.save #&& (@transaction.amount <= @transaction.sender_wallet.balance && self.activity != 'Withdrawal' || 'Transfer')
       @transaction.update_balance
       redirect_to root_path, notice: 'transaction was created.'
     else

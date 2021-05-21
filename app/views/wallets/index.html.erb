@@ -12,3 +12,15 @@
   <%= link_to 'Create a new wallet', new_wallet_path %>
 </div>
 
+
+<h1 class="mt-5">Your Recent Transactions</h1>
+    <ul>
+  <% @transactions.each do |transaction| %>
+      <li><%= transaction.amount %> / <%= transaction.activity %> / <%= transaction.sender_wallet.name %>
+        <% if transaction.activity == "Transfer"  %>
+          --> <%= transaction.receiver_wallet.name%>
+        <% end  %>
+        </li>
+  <% end %>
+    </ul>
+

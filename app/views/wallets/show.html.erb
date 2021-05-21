@@ -1,16 +1,19 @@
-<h5>
+<h1>
   <%= @wallet.name %>
-</h5>
+</h1>
 
-<h6>Current Balance: <%= @wallet.balance %></h6>
+<h5>Current Balance: <%= @wallet.balance %></h5>
 
-<h6 class="mt-5">Transaction History</h6>
-<% @transactions.each do |transaction| %>
-  <h6><%= transaction.amount %></h6>
-  <h6><%= transaction.activity %></h6>
-  <h6><%= transaction.purpose %></h6>
-  <h6><%= transaction.receiver_wallet.name %></h6>
-<% end %>
+<h1 class="mt-5">Transaction History</h1>
+    <ul>
+  <% @transactions.each do |transaction| %>
+      <li><%= transaction.amount %> / <%= transaction.activity %> / <%= transaction.purpose %> /<%= transaction.sender_wallet.name %>
+        <% if transaction.activity == "Transfer"  %>
+          --> <%= transaction.receiver_wallet.name%>
+        <% end  %>
+        </li>
+  <% end %>
+    </ul>
 
 <p class="mt-5">New transaction</p>
 <%= link_to 'withdraw', new_wallet_transaction_path(@wallet) %> /

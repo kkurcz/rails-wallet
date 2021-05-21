@@ -4,9 +4,13 @@ class WalletsController < ApplicationController
   def index
     # @wallets = Wallet.all
     @wallets = policy_scope(Wallet).order(created_at: :desc)
+
+    # show recent transactions on users homepage
+    @transactions = policy_scope(Transaction).where(sender_wallet: @wallets).order(created_at: :desc)
   end
 
   def show
+    # show all transactions of a given wallet
     @transactions = policy_scope(Transaction).where(sender_wallet: @wallet.id).order(created_at: :desc)
   end
 
