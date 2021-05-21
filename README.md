@@ -44,6 +44,11 @@ Controllers: ```app/controllers/concerns```:
 
 Authorization Policies: ```app/policies```
 
+Tests:
+  - Github workflow test configuration ```rails-wallet/.github/workflows/test.yml```
+  - System tests ```app/test/system```
+  - Model tests ```app/test/models```
+
 ## Setup
 
 Clone the repository
