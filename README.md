@@ -85,6 +85,10 @@ Model tests:
 rails test:model
 ```
 
+Sign up/log in:
+
+You can use email: test@test.com password: 123456 for login or simply sign up.
+
 ## Project Status
 Project is: _in progress_ ⏳
 
