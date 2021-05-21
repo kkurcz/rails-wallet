@@ -4,12 +4,12 @@
 
 <h5>Current Balance: <%= humanized_money_with_symbol(@wallet.balance) %></h5>
 
-<h1 class="mt-5">Transaction History</h1>
+<h3 class="mt-5">Transaction History</h3>
 <ul>
   <% @transactions.each do |transaction| %>
-      <li><%= humanized_money_with_symbol(transaction.amount) %> / <%= transaction.activity %> / <%= transaction.purpose %> /<%= transaction.sender_wallet.name %>
+      <li><%= humanized_money_with_symbol(transaction.amount) %> | <%= transaction.activity %> | <%= transaction.purpose %> | <%= transaction.sender_wallet.name %>
         <% if transaction.activity == "Transfer"  %>
-          --> <%= transaction.receiver_wallet.name%>
+          → <%= transaction.receiver_wallet.name%>
         <% end  %>
         </li>
   <% end %>
@@ -19,13 +19,13 @@
   <h6 class="mt-4">No transaction history yet, make your first deposit 👇</h6>
 <% end %>
 
-<p class="mt-5">New transaction</p>
+<h3 class="mt-5">New transaction</h3>
 <%= link_to 'withdraw', new_wallet_transaction_path(@wallet) %> /
 <%= link_to 'deposit', new_wallet_transaction_path(@wallet) %> /
 <%= link_to 'transfer', new_wallet_transaction_path(@wallet) %>
 
-<p class="mt-5">Manage this wallet</p>
+<h3 class="mt-5">Manage this wallet</h3>
 
-<%= link_to 'edit', edit_wallet_path(@wallet) %> /
-<%= link_to 'delete', wallet_path(@wallet), method: :delete, data: {confirm: "Are you sure?"} %> /
-<%= link_to 'back', root_path %>
+<%= link_to 'Edit', edit_wallet_path(@wallet) %> /
+<%= link_to 'Delete Wallet', wallet_path(@wallet), method: :delete, data: {confirm: "Are you sure?"} %> /
+<%= link_to 'Back', root_path %>
