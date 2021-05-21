@@ -5,12 +5,12 @@ class WalletTest < ActiveSupport::TestCase
     @wallet = wallets(:kev_household_wallet)
   end
 
-  test 'valid user' do
+  test 'valid wallet' do
     assert @wallet.valid?
   end
 
-  test 'invalid without amount' do
-    @wallet.amount = nil
+  test 'invalid without balance' do
+    @wallet.balance = nil
     refute @wallet.valid?, 'saved wallet without an amount'
     assert_not_nil @wallet.errors[:amount], 'no validation error for amount present'
   end
