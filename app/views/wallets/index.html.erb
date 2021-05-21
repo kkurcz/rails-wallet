@@ -5,7 +5,7 @@
 
 <% @wallets.each do |wallet| %>
   <h5 class="mt-5 wallet-title"><%= link_to wallet.name, wallet_path(wallet) %></h5>
-  <h6>Wallet balance: <%= wallet.balance %></h6>
+  <h6>Wallet balance: <%= humanized_money_with_symbol(wallet.balance) %></h6>
 <% end %>
 
 <div class="mt-5">
@@ -16,7 +16,7 @@
 <h1 class="mt-5">Your Recent Transactions</h1>
     <ul>
   <% @transactions.each do |transaction| %>
-      <li><%= transaction.amount %> / <%= transaction.activity %> / <%= transaction.sender_wallet.name %>
+      <li><%= humanized_money_with_symbol(transaction.amount) %> / <%= transaction.activity %> / <%= transaction.sender_wallet.name %>
         <% if transaction.activity == "Transfer"  %>
           --> <%= transaction.receiver_wallet.name%>
         <% end  %>

@@ -6,6 +6,9 @@ class Transaction < ApplicationRecord
   validates :purpose, presence: true, length: { minimum: 1 }
   validates :activity, inclusion: { in: ["Withdrawal", "Deposit", "Transfer"] }
 
+  # shows currency of transaction (currently set to USD)
+  monetize :price_cents
+
   def update_balance
     # raise
     if self.activity == 'Withdrawal'

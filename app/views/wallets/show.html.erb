@@ -2,12 +2,12 @@
   <%= @wallet.name %>
 </h1>
 
-<h5>Current Balance: <%= @wallet.balance %></h5>
+<h5>Current Balance: <%= humanized_money_with_symbol(@wallet.balance) %></h5>
 
 <h1 class="mt-5">Transaction History</h1>
     <ul>
   <% @transactions.each do |transaction| %>
-      <li><%= transaction.amount %> / <%= transaction.activity %> / <%= transaction.purpose %> /<%= transaction.sender_wallet.name %>
+      <li><%= humanized_money_with_symbol(transaction.amount) %> / <%= transaction.activity %> / <%= transaction.purpose %> /<%= transaction.sender_wallet.name %>
         <% if transaction.activity == "Transfer"  %>
           --> <%= transaction.receiver_wallet.name%>
         <% end  %>
