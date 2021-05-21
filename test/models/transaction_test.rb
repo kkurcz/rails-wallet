@@ -30,8 +30,8 @@ class TransactionTest < ActiveSupport::TestCase
 
   test 'Transfer money adds correct amount to receiver wallet balance and deducts correct amount from sender wallet balance' do
     @transfer_transaction.update_balance
-    assert_equal 0, @transfer_transaction.sender_wallet.balance, msg: "Withdraw money test failed, sender wallet did not deduct the correct amount from wallet balance"
-    assert_equal 1000, @transfer_transaction.receiver_wallet.balance, msg: "Withdraw money test failed, receiver wallet did not add the correct amount to wallet balance"
+    assert_equal 0, @transfer_transaction.sender_wallet.balance, msg: "Transfer money test failed, sender wallet did not deduct the correct amount from wallet balance"
+    assert_equal 1000, @transfer_transaction.receiver_wallet.balance, msg: "Transfer money test failed, receiver wallet did not add the correct amount to wallet balance"
   end
 end
 

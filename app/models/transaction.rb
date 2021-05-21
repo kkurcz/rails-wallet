@@ -11,19 +11,18 @@ class Transaction < ApplicationRecord
 
   def update_balance
     # raise
-    # check type of activity and adjust wallet balance accordingly
+    # update the transaction wallet(s) balance depending on transaction activity
     if self.activity == 'Withdrawal'
       self.sender_wallet.balance -= self.amount
-      self.sender_wallet.save
     elsif self.activity == 'Deposit'
       self.sender_wallet.balance += self.amount
-      self.sender_wallet.save
     else
       self.sender_wallet.balance -= self.amount
       self.receiver_wallet.balance += self.amount
-      self.sender_wallet.save
-      self.receiver_wallet.save
     end
+    # save new wallet balance
+    self.sender_wallet.save
+    self.receiver_wallet.save
   end
 
   def funds_sufficient?
