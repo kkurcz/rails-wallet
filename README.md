@@ -97,6 +97,7 @@ Project is: _in progress_ ⏳
   - User input for transfer should show email
   - Depending on use case only allow users to have one wallet
   - Increased model and system testing
+  - Improved error rendering for users
 
 ## MIT License
 
