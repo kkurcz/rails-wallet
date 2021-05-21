@@ -54,8 +54,12 @@ Tests:
 Clone the repository
 
 ```
-git clone https://github.com/kkurcz/rails-wallet.git
+git clone "link temporarily withheld"
 ```
+
+OR
+
+Open .zip file
 
 Install dependencies
 
@@ -73,7 +77,7 @@ Project is: _in progress_ ⏳
 
 ## MIT License
 
-Copyright (c) [2021] Name
+Copyright (c) [2021] "name temporarily witheld"
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
