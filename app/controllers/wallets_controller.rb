@@ -1,5 +1,4 @@
 class WalletsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
   before_action :set_wallet, only: [:show, :edit, :update, :destroy]
   def index
     # @wallets = Wallet.all

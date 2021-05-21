@@ -1,11 +1,12 @@
-<h1>Wallets#index</h1>
-<p>Find me in app/views/wallets/index.html.erb</p>
-
 <h1>Your Wallets</h1>
 
 <% @wallets.each do |wallet| %>
   <h5 class="mt-5 wallet-title"><%= link_to wallet.name, wallet_path(wallet) %></h5>
   <h6>Wallet balance: <%= humanized_money_with_symbol(wallet.balance) %></h6>
+<% end %>
+
+<% if @wallets.length < 1%>
+  <h6 class="mt-4">Please create your first wallet 👇</h6>
 <% end %>
 
 <div class="mt-5">
@@ -23,4 +24,8 @@
         </li>
   <% end %>
     </ul>
+
+  <% if @transactions.length < 1%>
+    <h6 class="mt-4">No transaction history yet, please create a wallet and make your first deposit</h6>
+  <% end %>
 
