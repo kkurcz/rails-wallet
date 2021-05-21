@@ -14,7 +14,7 @@
 </div>
 
 
-<h1 class="mt-5">Your Recent Transactions</h1>
+<h1 class="mt-5">All Transactions</h1>
     <ul>
   <% @transactions.each do |transaction| %>
       <li><%= humanized_money_with_symbol(transaction.amount) %> / <%= transaction.activity %> / <%= transaction.sender_wallet.name %>

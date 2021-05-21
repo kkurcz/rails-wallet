@@ -5,7 +5,7 @@
 <h5>Current Balance: <%= humanized_money_with_symbol(@wallet.balance) %></h5>
 
 <h1 class="mt-5">Transaction History</h1>
-    <ul>
+<ul>
   <% @transactions.each do |transaction| %>
       <li><%= humanized_money_with_symbol(transaction.amount) %> / <%= transaction.activity %> / <%= transaction.purpose %> /<%= transaction.sender_wallet.name %>
         <% if transaction.activity == "Transfer"  %>
@@ -13,7 +13,11 @@
         <% end  %>
         </li>
   <% end %>
-    </ul>
+</ul>
+
+<% if @transactions.length < 1%>
+  <h6 class="mt-4">No transaction history yet, make your first deposit 👇</h6>
+<% end %>
 
 <p class="mt-5">New transaction</p>
 <%= link_to 'withdraw', new_wallet_transaction_path(@wallet) %> /
