@@ -10,11 +10,11 @@ class TransactionsController < ApplicationController
   end
 
   def new
+    # @wallets is only needed for frontend simple_form transfers ui
+    @wallets = Wallet.all
     @wallet = Wallet.find(params[:wallet_id])
     @transaction = Transaction.new
     authorize @transaction
-    # this is only needed for frontend simple form for transfers
-    @wallets = Wallet.all
   end
 
   # GET /transaction/1/edit
@@ -28,11 +28,11 @@ class TransactionsController < ApplicationController
     @wallet = Wallet.find(params[:wallet_id])
     @transaction.sender_wallet = @wallet
     authorize @transaction
-
-    if @transaction.save #&& (@transaction.amount <= @transaction.sender_wallet.balance && self.activity != 'Withdrawal' || 'Transfer')
+    if @transaction.funds_sufficient? && @transaction.save
       @transaction.update_balance
       redirect_to root_path, notice: 'transaction was created.'
     else
+      flash[:alert] = "Please check that you have sufficient funds in this wallet and all information is correct."
       render :new
     end
   end

@@ -11,6 +11,7 @@ class Transaction < ApplicationRecord
 
   def update_balance
     # raise
+    # check type of activity and adjust wallet balance accordingly
     if self.activity == 'Withdrawal'
       self.sender_wallet.balance -= self.amount
       self.sender_wallet.save
@@ -23,5 +24,10 @@ class Transaction < ApplicationRecord
       self.sender_wallet.save
       self.receiver_wallet.save
     end
+  end
+
+  def funds_sufficient?
+    # check if wallet has enough funds to perform transaction
+    self.amount <= self.sender_wallet.balance || self.activity == "Deposit"
   end
 end
