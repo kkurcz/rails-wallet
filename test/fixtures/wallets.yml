@@ -1,13 +1,21 @@
 ethereum_wallet:
+  id: 1
   name: "ethereum wallet"
-  balance: 100
+  balance: 500
   user_id: 1
 bitcoin_wallet:
+  id: 2
   name: "bitcoin wallet"
-  balance: 300
+  balance: 500
   user_id: 2
-household_wallet:
-  name: "household"
-  balance: 900
+kev_household_wallet:
+  id: 3
+  name: "Kev's household wallet"
+  balance: 500
+  user_id: 1
+sara_business_wallet:
+  id: 4
+  name: "Sara's business wallet"
+  balance: 500
   user_id: 2
 

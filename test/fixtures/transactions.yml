@@ -1,0 +1,21 @@
+transfer_transaction:
+  id: 1
+  activity: "Transfer"
+  purpose: "Transfer Test"
+  amount: 500
+  receiver_wallet: 1
+  sender_wallet: 2
+deposit_transaction:
+  id: 2
+  activity: "Deposit"
+  purpose: "Deposit Test"
+  amount: 500
+  receiver_wallet: 1
+  sender_wallet: 1
+withdrawal_transaction:
+  id: 3
+  activity: "Withdrawal"
+  purpose: "Withdrawal Test"
+  amount: 500
+  receiver_wallet: 1
+  sender_wallet: 1
