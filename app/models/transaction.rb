@@ -26,7 +26,7 @@ class Transaction < ApplicationRecord
   end
 
   def funds_sufficient?
-    # check if wallet has enough funds to perform transaction
-    self.amount <= self.sender_wallet.balance || self.activity == "Deposit"
+    # check if wallet has enough funds to perform transfer or withdrawal transaction
+    self.activity == "Deposit" || self.amount <= self.sender_wallet.balance
   end
 end

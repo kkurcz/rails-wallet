@@ -1,6 +1,6 @@
 class Wallet < ApplicationRecord
   belongs_to :user
-  has_many :transactions
+  has_many :transactions #, dependent: :destroy -> need to fix wallets destroy first
 
   validates :balance, presence: true
   validates :name, uniqueness: true, length: { minimum: 1 }
