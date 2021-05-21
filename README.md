@@ -92,6 +92,12 @@ You can use email: test@test.com password: 123456 for login or simply sign up.
 ## Project Status
 Project is: _in progress_ ⏳
 
+## Areas to be Improved
+  - Transaction activity should be associated with a number, not a string
+  - User input for transfer should show email
+  - Depending on use case only allow users to have one wallet
+  - Increased model and system testing
+
 ## MIT License
 
 Copyright (c) [2021] "name temporarily witheld"
