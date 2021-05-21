@@ -25,5 +25,7 @@
 <h3 class="mt-5">Manage this wallet</h3>
 
 <%= link_to 'Edit', edit_wallet_path(@wallet) %> /
-<%= link_to 'Delete Wallet', wallet_path(@wallet), method: :delete, data: {confirm: "Are you sure?"} %> /
+<% if @transactions.length < 1%>
+  <%= link_to 'Delete Wallet', wallet_path(@wallet), method: :delete, data: {confirm: "Are you sure?"} %> /
+<% end  %>
 <%= link_to 'Back', root_path %>

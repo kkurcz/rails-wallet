@@ -1,6 +1,8 @@
 
 <h2>Please select the type of transaction</h2>
 
+<p class="my-4">For deposits and withdrawal please pick any wallet as "receiver wallet"</p>
+
 <%= simple_form_for [ @wallet, @transaction ] do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.error[:base].to_sentence if f.object.errors[:base].present? %>
