@@ -73,6 +73,18 @@ View on Localhost
 rails s
 ```
 
+Run tests
+
+System tests: (headless Chrome) (will open screenshot), comment out launchy to not have screenshots
+```
+rails test:system
+```
+
+Model tests:
+```
+rails test:model
+```
+
 ## Project Status
 Project is: _in progress_ ⏳
 
