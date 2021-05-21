@@ -46,6 +46,7 @@ Authorization Policies: ```app/policies```
 
 Tests:
   - Github workflow test configuration ```rails-wallet/.github/workflows/test.yml```
+  - Test configuration ```app/test/application_system_test_case```
   - System tests ```app/test/system```
   - Model tests ```app/test/models```
 
