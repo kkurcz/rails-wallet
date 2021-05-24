@@ -10,8 +10,9 @@ class TransactionTest < ActiveSupport::TestCase
     @deposit_transaction = Transaction.new(activity: "Deposit", amount: "500", purpose: "Transfer money test", sender_wallet: @wallet, receiver_wallet: @wallet)
     @withdrawal_transaction = Transaction.new(activity: "Withdrawal", amount: "500", purpose: "Transfer money test", sender_wallet: @wallet, receiver_wallet: @wallet)
     @transfer_transaction = Transaction.new(id: 1, activity: "Transfer", purpose: "Transfer Test", amount: 500, sender_wallet: @sender_wallet, receiver_wallet: @receiver_wallet)
-    @insufficient_funds_withdrawal = Transaction.new(id: 1, activity: "Withdrawal", purpose: "Transfer Test", amount: 2000, sender_wallet: @sender_wallet, receiver_wallet: @receiver_wallet)
+    @insufficient_funds_withdrawal = Transaction.new(id: 1, activity: "Withdrawal", purpose: "Withdrawal Test", amount: 2000, sender_wallet: @wallet, receiver_wallet: @wallet)
     @insufficient_funds_transfer = Transaction.new(id: 1, activity: "Transfer", purpose: "Transfer Test", amount: 2000, sender_wallet: @sender_wallet, receiver_wallet: @receiver_wallet)
+    @insufficient_funds_deposit = Transaction.new(id: 1, activity: "Deposit", purpose: "Deposit Test", amount: 2000, sender_wallet: @wallet, receiver_wallet: @wallet)
   end
 
   test 'All transaction types are valid' do
@@ -42,6 +43,10 @@ class TransactionTest < ActiveSupport::TestCase
 
   test 'Transfer will not be processed if funds insufficient' do
     assert @insufficient_funds_transfer.funds_sufficient? == false, msg: "Transfer funds test failed, user can transfer more money than wallet balance"
+  end
+
+  test 'Deposit will be processed normally and not affected by funds_sufficient method of transaction model' do
+    assert @insufficient_funds_deposit.funds_sufficient? == true, msg: "Deposit funds test failed, user cannot deposit more money than wallet balance"
   end
 end
 
